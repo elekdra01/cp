@@ -1,23 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<string> subseq(string s,string ans)
+vector<string> subseq(string s)
 {
     vector<string>arr;
     if(s.length()==0)
+        return arr.push_back("0");
+    char ch=s[0];
+    string ros=s.substr(1);
+    vector<string>myres;
+    vector<string>fin;
+    fin=subseq(ros);
+    for(auto x:fin)
     {
-       return arr.push_back(ans);
+        myres.push_back(x);
+        myres.push_back(ch+x);
     }
-    subseq(s.substr(1),ans+s[0]);
-    subseq(s.substr(1),ans); 
+    
+    
 }
 int main()
 {
 string s;
 cin>>s;
-vector<string>ansa;
-ansa=subseq(s,"\0");
-for(int i=0;i<ansa.size();i++)
+vector<string>ans;
+ans=subseq(s);
+for(int i=0;i<ans.size();i++)
 {
-    cout<<ansa[i]<<endl;
+    cout<<ans[i]<<endl;
 }
 }
